@@ -6,7 +6,7 @@
 2. Click this button:  
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/bencroker/cos23?quickstart=1)
 3. In the resulting window, you can see and open any existing Codespaces by clicking on them, otherwise you can click the “Create new codespace” button to create a new one.
-4. In the resulting Terminal window, type `make dev` to start the project up.
+4. After a few moments, you should see the Terminal window open and a stream of commands as the project is set up.
 3. Wait until you see output like this, and then access the site via the credentials that are output on the console:
 
 ```
@@ -23,6 +23,8 @@ You can access your existing Codespaces here:
 
 https://github.com/codespaces
 
-Click on one to resume it. If you don't see a Terminal window, go to the hamburger  menu in the top-left, and click on **Terminal > New Terminal**
+Click on one to resume it. If you don't see a Terminal window, go to the hamburger  menu in the top-left, and click on **Terminal > New Terminal**. You can run the command `make start` to start the project. 
 
 You can use the Codespaces editor to edit Twig files, load the site frontend, or log into the Craft CP, all from within a browser!
+
+Based on [Spin Up Craft](https://github.com/nystudio107/spin-up-craft]).
