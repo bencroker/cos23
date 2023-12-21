@@ -60,23 +60,11 @@ nuke: clean
 ssh:
 	docker compose exec -it php su-exec www-data /bin/sh
 # Wait until the PHP service is ready
-start:
+php_wait:
 	until [ ! "$$(docker compose ps --services | grep php)" ]; do \
-		sleep 1; \
-	done; \
-	if ! command -v nc &>/dev/null ; then \
-		DEV_SERVER_PORT="$${DEV_SERVER_PORT:=$(INITIAL_SERVER_PORT)}"; \
-		export DEV_SERVER_PORT; \
-	else \
-		port=$(INITIAL_SERVER_PORT); \
-		while [ -z "$$DEV_SERVER_PORT" ] ; do \
-			nc -z localhost $$port &>/dev/null || export DEV_SERVER_PORT=$$port; \
-			((port++)); \
-		done; \
-		echo "### Using port: $$DEV_SERVER_PORT"; \
-	fi; \
-	cp -n example.env .env; \
-	docker compose up;
+        sleep 1; \
+    done;
+start: php_wait up
 up:
 	if [ ! "$$(docker compose ps --services | grep php)" ]; then \
 		if ! command -v nc &>/dev/null ; then \
