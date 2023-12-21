@@ -59,12 +59,12 @@ nuke: clean
 # Open up a shell in the PHP container
 ssh:
 	docker compose exec -it php su-exec www-data /bin/sh
-# Wait until the PHP service is ready
-php_wait:
-	until [ ! "$$(docker compose ps --services | grep php)" ]; do \
+# Wait until Docker is ready
+docker_wait:
+	until docker info; do \
         sleep 1; \
     done;
-start: php_wait up
+start: docker_wait up
 up:
 	if [ ! "$$(docker compose ps --services | grep php)" ]; then \
 		if ! command -v nc &>/dev/null ; then \
