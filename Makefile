@@ -59,9 +59,10 @@ nuke: clean
 # Open up a shell in the PHP container
 ssh:
 	docker compose exec -it php su-exec www-data /bin/sh
-# Wait until Docker is ready
+# Wait until Docker is available
 docker_wait:
-	until docker info; do \
+	until docker info > /dev/null 2>&1; do \
+  		echo "### Waiting for Docker to be available..."; \
         sleep 1; \
     done;
 start: docker_wait up
