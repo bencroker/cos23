@@ -62,9 +62,9 @@ ssh:
 # Wait until Docker is available
 docker_wait:
 	until docker info > /dev/null 2>&1; do \
-  		echo "### Waiting for Docker to be available..."; \
-        sleep 1; \
-    done;
+		echo "### Waiting for Docker to be available..."; \
+		sleep 1; \
+	done;
 start: docker_wait up
 up:
 	if [ ! "$$(docker compose ps --services | grep php)" ]; then \
