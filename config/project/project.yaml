@@ -1,4 +1,4 @@
-dateModified: 1703178176
+dateModified: 1705433457
 elementSources:
   craft\elements\Entry:
     -
@@ -43,24 +43,64 @@ elementSources:
       type: heading
     -
       defaultSort:
-        - postDate
-        - desc
+        - title
+        - asc
       disabled: false
       key: 'section:2f9cfd47-380e-451a-8887-8e59dfed3d23' # Recipes
       tableAttributes:
-        - postDate
-        - expiryDate
+        - 'field:9607b25c-41e6-49ee-92f6-4f598d9bb638' # Image
+        - 'field:ca33dcf3-3d91-40de-bf74-8143afdea7f8' # Dietary Preferences
+        - 'field:94fcec23-115a-4bf5-8d3f-e54597736f24' # Level of Difficulty
         - link
       type: native
     -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
       key: 'section:4f4c5e55-bdb6-4b11-a80c-a707a67c93c8' # Dietary Preferences
+      tableAttributes:
+        - 'field:9607b25c-41e6-49ee-92f6-4f598d9bb638' # Image
+        - 'field:4455e8f9-3d20-4764-a87b-5177d121b07e' # Summary
       type: native
     -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
       key: 'section:842cdeba-cd27-4e0b-9de5-60ed051ee6bd' # Ingredients
+      tableAttributes:
+        - 'field:9607b25c-41e6-49ee-92f6-4f598d9bb638' # Image
+        - link
       type: native
     -
-      heading: ''
-      type: heading
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: 123480ac-e337-45d0-896a-d414b7cb93a2
+            values:
+              - 2f9cfd47-380e-451a-8887-8e59dfed3d23 # Recipes
+          -
+            class: craft\fields\conditions\OptionsFieldConditionRule
+            fieldUid: 94fcec23-115a-4bf5-8d3f-e54597736f24 # Level of Difficulty
+            operator: in
+            uid: b0b6e39c-0ed5-4d03-8957-862b5f5ccd81
+            values:
+              - easy
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - title
+        - asc
+      key: 'custom:71ca4f5a-a833-413b-accb-d03fe23c5d4f'
+      label: 'Easy Recipes'
+      tableAttributes:
+        - 'field:9607b25c-41e6-49ee-92f6-4f598d9bb638' # Image
+        - 'field:94fcec23-115a-4bf5-8d3f-e54597736f24' # Level of Difficulty
+      type: custom
 email:
   fromEmail: info@putyourlightson.com
   fromName: COS22
@@ -86,6 +126,7 @@ graphql:
 meta:
   __names__:
     0ad8c9e9-84c2-4582-91e3-f726d2a16faf: Default # Default
+    1c18b349-157b-4305-9f43-5809f4ebb583: 'Suitable for Children' # Suitable for Children
     2f9cfd47-380e-451a-8887-8e59dfed3d23: Recipes # Recipes
     2f80283d-6b98-4fda-8513-85293feafacf: Food # Food
     2ff70388-58ff-42cc-b63c-8b6a921ff80a: Step # Step
